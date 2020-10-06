@@ -1,0 +1,42 @@
+.search {
+  display: inline-block;
+  position: relative;
+  height: 40px;
+  float: right;
+}
+
+.search__input {
+  display: inline-block;
+  height: 100%;
+  width: 0px;
+  padding-right: 60px;
+  border: none;
+  outline: none;
+  background: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  transition: width 0.3s ease;
+  cursor: pointer;
+
+  &:focus {
+    width: 400px;
+    z-index: 1;
+    border-bottom: 1px solid #bbb;
+    cursor: text;
+  }
+}
+
+.search__submit {
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+  border: none;
+  background: url("/img/icons/icon_search.png") center center no-repeat;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  cursor: pointer;
+}

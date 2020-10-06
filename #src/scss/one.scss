@@ -1,0 +1,197 @@
+@import "nullstyle.scss";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+
+body {
+  a,
+  a:visited,
+  a:active,
+  a:hover {
+    text-decoration: none;
+    color: currentColor;
+  }
+  font-family: "Open Sans", sans-serif;
+  background: #fff4d7;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 50;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ecc96b;
+    z-index: 2;
+  }
+
+  &__body {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+  }
+
+  &__logo {
+    flex: 0 0 110px;
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    position: relative;
+    z-index: 3;
+  }
+
+  &__burger {
+    display: none;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    li {
+      list-style: none;
+      margin: 0 0 0 20px;
+    }
+  }
+
+  &__link {
+    color: #c26c53;
+    text-transform: uppercase;
+    font-size: 16px;
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 915px) {
+  body.lock {
+    overflow: hidden;
+  }
+  .header {
+    &__body {
+      height: 60px;
+    }
+
+    &__logo {
+      border-radius: 0;
+      background: none;
+    }
+
+    &__burger {
+      display: block;
+      position: relative;
+      width: 30px;
+      height: 20px;
+      z-index: 3;
+
+      & span {
+        position: absolute;
+        background: #c26c53;
+        // width: 100%; //так в уроке
+        width: 23px; //отличается от урока
+        height: 2px;
+        top: 9px;
+        transition: all 0.3s ease 0s;
+      }
+
+      &:before,
+      &:after {
+        content: "";
+        background: #c26c53;
+        position: absolute;
+        // width: 100%; //так в уроке
+        width: 23px; //отличается от урока
+        height: 2px;
+        left: 0;
+        transition: all 0.3s ease 0s;
+      }
+
+      &:before {
+        top: 0;
+      }
+
+      &:after {
+        bottom: 0;
+      }
+
+      &.active::before {
+        transform: rotate(45deg);
+        top: 9px;
+      }
+
+      &.active::after {
+        transform: rotate(-45deg);
+        bottom: 9px;
+      }
+
+      &.active span {
+        transform: scale(0);
+      }
+    }
+
+    &__menu {
+      position: fixed;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #c26c53;
+      padding: 70px 10px 20px 10px;
+      transition: all 0.3s ease 0s;
+      overflow: auto;
+
+      &.active {
+        top: 0;
+      }
+    }
+
+    &__list {
+      display: block;
+      li {
+        text-align: center;
+        margin: 40px 0 0px 0;
+        a {
+          color: #fff4d7;
+        }
+      }
+    }
+
+    &__link {
+      font-size: 20px;
+    }
+  }
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.content {
+  padding: 120px 0 0 0;
+  &__text {
+    font-size: 16px;
+    line-height: 25px;
+    color: #617574;
+    p {
+      margin: 0 0 20px 0;
+    }
+  }
+}
+
+@media (max-width: 915px) {
+  .content {
+    padding: 80px 0 0 0;
+  }
+}
